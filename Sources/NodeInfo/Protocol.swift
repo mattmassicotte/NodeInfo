@@ -25,7 +25,7 @@ public enum NodeInfoVersion: String, Codable, Sendable, Hashable {
 	case version_1_0 = "1.0"
 
 	public var uri: String {
-		"http://nodeinfo.diaspora.software/ns/schema/\(self)#"
+		"http://nodeinfo.diaspora.software/ns/schema/\(self.rawValue)"
 	}
 
 	public var uriProfile: String {

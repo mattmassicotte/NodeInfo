@@ -55,4 +55,8 @@ struct NodeInfoTests {
 
 		#expect(document == output)
 	}
+
+	@Test func schemaURI() throws {
+		#expect(NodeInfoVersion.version_2_1.uriProfile == "http://nodeinfo.diaspora.software/ns/schema/2.1#")
+	}
 }
