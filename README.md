@@ -10,7 +10,7 @@
 # NodeInfo
 A NodeInfo library for Swift.
 
-This is an implementation of the [NodeInfo](https://nodeinfo.diaspora.software) protocol.
+This is an implementation of the [NodeInfo](https://nodeinfo.diaspora.software) protocol. Currently supports versions 2.1 and 2.0, but open up an issue if you need something else and I'll try to add it!
 
 ## Integration
 
@@ -18,6 +18,36 @@ This is an implementation of the [NodeInfo](https://nodeinfo.diaspora.software) 
 dependencies: [
     .package(url: "https://github.com/mattmassicotte/NodeInfo", branch: "main")
 ]
+```
+
+## Usage
+
+```swift
+import NodeInfo
+
+// decode
+let document = try JSONDecoder().decode(NodeInfo_2_0.Document.selfself, from: nodeInfoData)
+
+print(document.software)
+
+// encode
+let document = NodeInfo_2_1.Document(
+    software: NodeInfo_2_1.Software(name: "system", version: "1.0", repository: "some_repo", homepage: "some_site"),
+    protocols: [.xmpp],
+    services: NodeInfo_2_1.Services(inbound: [.pop3], outbound: [.blogger]),
+    openRegistrations: false,
+    usage: NodeInfo_2_1.Usage(
+        users: NodeInfo_2_1.Usage.Users(
+            total: 5,
+            activeHalfyear: 4,
+            activeMonth: 3
+        ),
+        localPosts: 40,
+        localComments: 50
+    )
+)
+
+let data = try JSONEncoder().encode(document)
 ```
 
 ## Contributing and Collaboration
