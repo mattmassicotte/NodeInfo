@@ -12,7 +12,7 @@ public enum NodeInfoProtocol {
 	public struct Document: Codable, Sendable, Hashable {
 		public let links: [Link]
 
-		init(links: [Link]) {
+		public init(links: [Link]) {
 			self.links = links
 		}
 	}

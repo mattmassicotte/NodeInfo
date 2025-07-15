@@ -59,4 +59,16 @@ struct NodeInfoTests {
 	@Test func schemaURI() throws {
 		#expect(NodeInfoVersion.version_2_1.uriProfile == "http://nodeinfo.diaspora.software/ns/schema/2.1#")
 	}
+
+	@Test func protocolDocument() throws {
+		let document = NodeInfoProtocol.Document(links: [
+			NodeInfoProtocol.Link(rel: "a", href: "b")
+		])
+
+		let data = try JSONEncoder().encode(document)
+		let output = try JSONDecoder().decode(NodeInfoProtocol.Document.self, from: data)
+
+		#expect(document == output)
+
+	}
 }
