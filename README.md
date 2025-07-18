@@ -26,7 +26,7 @@ dependencies: [
 import NodeInfo
 
 // decode
-let document = try JSONDecoder().decode(NodeInfo_2_0.Document.selfself, from: nodeInfoData)
+let document = try JSONDecoder().decode(NodeInfo_2_0.Document.self, from: nodeInfoData)
 
 print(document.software)
 
